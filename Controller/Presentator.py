@@ -44,6 +44,7 @@ class Control_poke:
 
     def appliquer_filtres(self,filtre_type1=None,filtre_type2=None,filtre_type3=None):
         if len(filtre_type1)==0 and len(filtre_type2)==0 and len(filtre_type3)==0:
+            self.test=False
             self.poke_GUI.affichage_cartes_pokemons.affichage_poke_specifique(self.poke_data.iloc[:self.compteur_cartes_pokemons_affiches, 1])
             return
 
@@ -72,7 +73,6 @@ class Control_poke:
                                        "Recherche_Simple",trie=self.poke_arbre)
                 filtrage[filtre]=valeur[0],strategie
 
-        self.test=False
         for filtre,info in filtrage.items():
             strategie=info[1]
             print(strategie)
@@ -115,7 +115,7 @@ class Control_poke:
         
         #Comme Strategy_Filtrage c'est une classe
             #On accède à la fonction aaplication_filtre() qui nous retourne les données filtrés
-        self.data_filtree=Strategy_Filtrage.application_filtre(Strategy_Filtrage,self.poke_data,entree)
+        self.data_filtree=Strategy_Filtrage.application_filtre(Strategy_Filtrage,self.poke_data,entree) #staretgy c'est le" self "de la classe
         data_pour_afficher=self.data_filtree[self.filtres_principaux]
                                                             #On utilise la structure d¡une liste car ordre important
         self.test=True
